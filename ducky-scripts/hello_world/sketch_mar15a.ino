@@ -16,14 +16,14 @@ void typeKey(uint8_t key)
 /* Init function */
 void setup()
 {
-  pinMode(BUTTON_PIN, INPUT);
+  // pinMode(BUTTON_PIN, INPUT);
   
-  String message;
-  if (digitalRead(BUTTON_PIN) == HIGH)  {
-    message = "BUTTON" ;
-  } else {
-    message = "Hello world";
-  }
+  // String message;
+  // if (digitalRead(BUTTON_PIN) == HIGH)  {
+  //   message = "BUTTON" ;
+  // } else {
+  //   message = "Hello world";
+  // }
   
   // Begining the Keyboard stream
   Keyboard.begin();
